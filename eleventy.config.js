@@ -12,6 +12,19 @@ module.exports = function (eleventyConfig) {
     level: 2,
   });
 
+  // Open external links in new tab
+  const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+  md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
+    const href = tokens[idx].attrGet("href");
+    if (href && href.startsWith("http")) {
+      tokens[idx].attrSet("target", "_blank");
+      tokens[idx].attrSet("rel", "noopener");
+    }
+    return defaultRender(tokens, idx, options, env, self);
+  };
+
   eleventyConfig.setLibrary("md", md);
 
   // Don't use .gitignore for ignoring files (we need src/content/ which is gitignored)
