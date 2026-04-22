@@ -20,6 +20,9 @@ module.exports = function (eleventyConfig) {
   // Manually ignore node_modules and dist
   eleventyConfig.ignores.add("node_modules");
 
+  // Current year for copyright
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
   // Pass through static assets
   eleventyConfig.addPassthroughCopy({ "public": "/" });
 
