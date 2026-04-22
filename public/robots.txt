@@ -1,0 +1,30 @@
+# robots.txt for systemshardening.com
+# We welcome all crawlers, including AI agents.
+
+User-agent: *
+Allow: /
+
+# AI crawlers - explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap location
+Sitemap: https://systemshardening.github.io/sitemap.xml

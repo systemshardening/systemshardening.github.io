@@ -1,0 +1,30 @@
+---
+permalink: /api/articles.json
+eleventyExcludeFromCollections: true
+---
+{
+  "site": {{ site.title | jsonStringify | safe }},
+  "description": {{ site.description | jsonStringify | safe }},
+  "generated": "{% currentDate %}",
+  "total_articles": {{ collections.articles.length }},
+  "categories": [{% set cats = collections.articlesByCategory %}{% set first = true %}{% for catSlug, catArticles in cats %}{% if not first %},{% endif %}{% set first = false %}
+    {
+      "slug": "{{ catSlug }}",
+      "name": {{ catSlug | categoryName | jsonStringify | safe }},
+      "count": {{ catArticles.length }}
+    }{% endfor %}
+  ],
+  "articles": [{% set first = true %}{% for article in collections.articles %}{% if not first %},{% endif %}{% set first = false %}
+    {
+      "title": {{ article.data.title | jsonStringify | safe }},
+      "url": "{{ article.url }}",
+      "full_url": "{{ site.url }}{{ article.url }}",
+      "category": "{{ article.data.category }}",
+      "tags": {{ article.data.tags | jsonStringify | safe }},
+      "difficulty": "{{ article.data.difficulty }}",
+      "reading_time_minutes": {{ article.data.estimated_reading_time }},
+      "date": "{{ article.data.date | dateToISO }}",
+      "personas": {{ article.data.personas | jsonStringify | safe }}
+    }{% endfor %}
+  ]
+}

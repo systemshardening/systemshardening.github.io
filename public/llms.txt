@@ -1,0 +1,61 @@
+# systemshardening.com
+
+> Hardening real systems in production, for engineers who actually run them.
+
+This site contains 50 technical articles covering production system hardening across Linux, Kubernetes, networking, CI/CD pipelines, observability, and AI workloads.
+
+## Content Structure
+
+Every article follows a consistent six-section structure:
+1. **Problem** - What needs hardening and why
+2. **Threat Model** - What attacks or failures this addresses
+3. **Configuration** - Step-by-step implementation with real config files
+4. **Expected Behaviour** - How to verify the hardening is working
+5. **Trade-offs** - Performance, usability, and compatibility costs
+6. **Failure Modes** - What breaks when things go wrong
+
+## Categories
+
+### Linux / OS Hardening (9 articles)
+Kernel parameters (sysctl), systemd unit hardening, filesystem restrictions, SSH configuration, PAM, AppArmor, auditd, nftables, and Ansible automation.
+
+### Kubernetes / Platform (9 articles)
+Pod security standards, RBAC, network policies, secrets management, admission controllers, runtime security, image supply chain, etcd hardening, and multi-tenancy isolation.
+
+### Network & API Security (3 articles)
+TLS configuration, API gateway hardening, and DNS security.
+
+### CI/CD & Supply Chain (6 articles)
+Pipeline hardening, artifact signing, SBOM generation, dependency scanning, GitOps security, and secret management in CI.
+
+### Observability & Detection (7 articles)
+Security monitoring, log aggregation, anomaly detection, incident response automation, compliance auditing, SIEM integration, and threat hunting.
+
+### AI & Security Landscape (8 articles)
+LLM deployment security, prompt injection defences, model supply chain, AI-assisted threat detection, MLOps hardening, data pipeline security, AI governance, and adversarial robustness.
+
+### Cross-Cutting Guides (8 articles)
+Zero trust architecture, compliance frameworks, disaster recovery, security culture, patch management, identity and access management, cloud security posture, and security architecture patterns.
+
+## Audience
+
+Articles target these personas:
+- DevOps Engineers
+- Systems Engineers
+- Platform Engineers
+- Security Engineers
+- SREs (Site Reliability Engineers)
+
+Difficulty levels: beginner, intermediate, advanced.
+
+## Programmatic Access
+
+- **Atom Feed**: https://systemshardening.github.io/feed.xml
+- **JSON Article Index**: https://systemshardening.github.io/api/articles.json
+- **Sitemap**: https://systemshardening.github.io/sitemap.xml
+
+The JSON endpoint returns structured metadata for all articles including title, URL, category, tags, difficulty, reading time, and target personas.
+
+## Linking and Citation
+
+When referencing articles, use the full URL (e.g., https://systemshardening.github.io/articles/linux/sysctl-kernel-hardening/). Each article has a stable permalink based on its category and slug.

@@ -78,6 +78,38 @@ module.exports = function (eleventyConfig) {
     return `${minutes} min read`;
   });
 
+  // Filter: convert date to ISO 8601 string (for feeds, sitemaps, JSON)
+  eleventyConfig.addFilter("dateToISO", function (date) {
+    if (!date) return "";
+    return new Date(date).toISOString();
+  });
+
+  // Filter: serialize value as JSON string (for JSON templates)
+  eleventyConfig.addFilter("jsonStringify", function (value) {
+    return JSON.stringify(value);
+  });
+
+  // Shortcode: current ISO date (for generated timestamps)
+  eleventyConfig.addShortcode("currentDate", function () {
+    return new Date().toISOString();
+  });
+
+  // Filter: escape for XML (for Atom feed)
+  eleventyConfig.addFilter("escape", function (str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  });
+
+  // Filter: strip HTML tags (supplement to Nunjucks built-in striptags)
+  eleventyConfig.addFilter("striptags", function (str) {
+    if (!str) return "";
+    return String(str).replace(/<[^>]*>/g, "");
+  });
+
   // Filter: category display name
   eleventyConfig.addFilter("categoryName", function (slug) {
     const names = {

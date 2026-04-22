@@ -1,18 +1,21 @@
 {# Reusable article card for listing pages #}
 {# Usage: {% set article = item %}{% include "article-meta.njk" %} #}
 <div class="article-card">
-  <a href="{{ article.url }}">
-    <h3>{{ article.data.title }}</h3>
-  </a>
   <div class="article-card-meta">
-    <span class="article-category">{{ article.data.category | categoryName }}</span>
+    <span class="article-category" data-cat="{{ article.data.category }}">{{ article.data.category | categoryName }}</span>
     {% if article.data.difficulty %}
       <span class="article-difficulty">{{ article.data.difficulty }}</span>
     {% endif %}
     {% if article.data.estimated_reading_time %}
-      <span class="article-reading-time">{{ article.data.estimated_reading_time }} min</span>
+      <span class="article-reading-time">{{ article.data.estimated_reading_time }} min read</span>
     {% endif %}
   </div>
+  <a href="{{ article.url }}">
+    <h3>{{ article.data.title }}</h3>
+  </a>
+  {% if article.data.description %}
+    <p class="article-card-excerpt">{{ article.data.description }}</p>
+  {% endif %}
   {% if article.data.tags %}
     <div class="article-tags">
       {% for tag in article.data.tags | slice(0, 4) %}

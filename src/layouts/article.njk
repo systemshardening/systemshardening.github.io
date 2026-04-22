@@ -4,7 +4,7 @@ layout: base.njk
 <article class="article">
   <header class="article-header">
     <div class="article-meta">
-      <span class="article-category">{{ category | categoryName }}</span>
+      <span class="article-category" data-cat="{{ category }}">{{ category | categoryName }}</span>
       {% if difficulty %}
         <span class="article-difficulty">{{ difficulty }}</span>
       {% endif %}
@@ -24,6 +24,17 @@ layout: base.njk
       </div>
     {% endif %}
   </header>
+
+  {% if toc %}
+  <nav class="article-toc" aria-label="Table of contents">
+    <p class="article-toc-title">On this page</p>
+    <ol>
+      {% for item in toc %}
+        <li><a href="#{{ item.slug }}">{{ item.text }}</a></li>
+      {% endfor %}
+    </ol>
+  </nav>
+  {% endif %}
 
   <div class="article-content">
     {{ content | safe }}
