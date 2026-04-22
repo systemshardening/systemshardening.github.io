@@ -1,0 +1,41 @@
+---
+layout: base.njk
+---
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="article-category">{{ category | categoryName }}</span>
+      {% if difficulty %}
+        <span class="article-difficulty">{{ difficulty }}</span>
+      {% endif %}
+      {% if estimated_reading_time %}
+        <span class="article-reading-time">{{ estimated_reading_time }} min read</span>
+      {% endif %}
+    </div>
+    <h1>{{ title }}</h1>
+    {% if date %}
+      <time datetime="{{ date }}">{{ date | dateDisplay }}</time>
+    {% endif %}
+    {% if tags %}
+      <div class="article-tags">
+        {% for tag in tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="article-content">
+    {{ content | safe }}
+  </div>
+
+  <footer class="article-footer">
+    {% if lastmod %}
+      <p class="article-updated">Last updated: {{ lastmod | dateDisplay }}</p>
+    {% endif %}
+    <nav class="article-nav">
+      <a href="/articles/">All articles</a>
+      <a href="/articles/#{{ category }}">More in {{ category | categoryName }}</a>
+    </nav>
+  </footer>
+</article>

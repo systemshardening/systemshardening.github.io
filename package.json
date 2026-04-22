@@ -1,0 +1,17 @@
+{
+  "name": "systemshardening-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/import-content.js",
+    "build": "npx @11ty/eleventy",
+    "predev": "node scripts/import-content.js",
+    "dev": "npx @11ty/eleventy --serve",
+    "clean": "rm -rf dist src/content"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0"
+  }
+}

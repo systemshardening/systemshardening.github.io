@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ site.language or 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:type" content="{% if layout == 'article.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
+  <!-- Security headers via meta (supplemented by server headers) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  {% include "header.njk" %}
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  {% include "footer.njk" %}
+</body>
+</html>
