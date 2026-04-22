@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Checkout site repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout content from private repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: systemshardening/systemshardening-roadmap-planning
           path: external-content
@@ -35,9 +35,9 @@ jobs:
           sparse-checkout-cone-mode: true
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -52,7 +52,7 @@ jobs:
         run: touch dist/.nojekyll
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
@@ -66,4 +66,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
