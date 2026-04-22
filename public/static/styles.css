@@ -109,7 +109,11 @@
   border: none;
   color: var(--color-header-text);
   font-size: 1.1rem;
-  padding: 0.4rem 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
