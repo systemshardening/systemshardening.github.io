@@ -4,6 +4,18 @@ layout: base.njk
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "{{ site.url }}/articles/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ category | categoryName }}", "item": "{{ site.url }}/articles/{{ category }}/"},
+    {"@type": "ListItem", "position": 4, "name": "{{ title }}"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "{{ title }}",
   "datePublished": "{{ date | dateToISO }}",
@@ -68,7 +80,7 @@ layout: base.njk
     {% endif %}
     <nav class="article-nav">
       <a href="/articles/">All articles</a>
-      <a href="/articles/#{{ category }}">More in {{ category | categoryName }}</a>
+      <a href="/articles/{{ category }}/">More in {{ category | categoryName }}</a>
     </nav>
   </footer>
 </article>

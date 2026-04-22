@@ -1,0 +1,20 @@
+---
+layout: base.njk
+title: "Network & API Security Articles"
+description: "Network security guides covering TLS, NGINX hardening, rate limiting, mTLS, WAF tuning, gRPC, WebSocket security, and IPv6 hardening."
+permalink: "/articles/network/"
+---
+<div class="articles-page-header">
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+</div>
+
+{% include "nav.njk" %}
+
+<div class="article-list">
+{% set catArticles = collections.articlesByCategory['network'] %}
+{% for item in catArticles %}
+  {% set article = item %}
+  {% include "article-meta.njk" %}
+{% endfor %}
+</div>

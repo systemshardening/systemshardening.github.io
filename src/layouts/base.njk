@@ -16,17 +16,20 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:locale" content="{{ site.language or 'en' }}">
+  <meta property="og:image" content="{{ site.url }}/static/og-default.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or site.title }}">
   <meta name="twitter:description" content="{{ description or site.description }}">
-  {% if site.twitter %}
-  <meta name="twitter:site" content="{{ site.twitter }}">
-  {% endif %}
+  <meta name="twitter:image" content="{{ site.url }}/static/og-default.svg">
 
   <!-- Security headers via meta (supplemented by server headers) -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <script>
     (function() {
