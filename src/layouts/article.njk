@@ -1,6 +1,28 @@
 ---
 layout: base.njk
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ title }}",
+  "datePublished": "{{ date | dateToISO }}",
+  "dateModified": "{{ lastmod | dateToISO if lastmod else date | dateToISO }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Systems Hardening",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "systemshardening.com"
+  },
+  "description": "{{ description or '' }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+  "proficiencyLevel": "{{ difficulty }}",
+  "timeRequired": "PT{{ estimated_reading_time }}M"
+}
+</script>
 <article class="article">
   <header class="article-header">
     <div class="article-meta">
