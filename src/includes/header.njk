@@ -1,14 +1,14 @@
 <div class="site-header-wrap">
   <header class="site-header">
-    <div class="header-inner">
+    <div class="header-top">
       <a href="/" class="site-logo">systemshardening<span class="logo-dot">.</span>com</a>
-      <nav class="site-nav">
-        <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
-        <a href="/articles/"{% if '/articles/' in page.url %} aria-current="page"{% endif %}>Articles</a>
-        <a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
-        <a href="/principles/"{% if page.url == '/principles/' %} aria-current="page"{% endif %}>Principles</a>
-        <button class="theme-toggle" aria-label="Toggle dark mode">&#9790;</button>
-      </nav>
+      <button class="theme-toggle" aria-label="Toggle dark mode">&#9790;</button>
     </div>
+    <nav class="site-nav">
+      <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+      <a href="/articles/"{% if '/articles/' in page.url %} aria-current="page"{% endif %}>Articles</a>
+      <a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a href="/principles/"{% if page.url == '/principles/' %} aria-current="page"{% endif %}>Principles</a>
+    </nav>
   </header>
 </div>
