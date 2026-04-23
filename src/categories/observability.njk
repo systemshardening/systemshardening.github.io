@@ -9,6 +9,10 @@ permalink: "/articles/observability/"
   <p>{{ description }}</p>
 </div>
 
+<div class="search-box">
+  <input type="search" id="article-search" placeholder="Search articles..." autocomplete="off">
+</div>
+
 {% include "nav.njk" %}
 
 <div class="article-list">
@@ -18,3 +22,5 @@ permalink: "/articles/observability/"
   {% include "article-meta.njk" %}
 {% endfor %}
 </div>
+
+<script src="/static/search.js" defer></script>
