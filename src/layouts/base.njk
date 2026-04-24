@@ -48,7 +48,7 @@
 <body>
   {% include "header.njk" %}
 
-  <main{% if page.url == '/articles/' %} class="main-wide"{% endif %}>
+  <main{% if layout != 'article.njk' and '/articles/' in page.url %} class="main-wide"{% endif %}>
     {{ content | safe }}
   </main>
 
