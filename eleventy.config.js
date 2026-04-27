@@ -136,6 +136,7 @@ module.exports = function (eleventyConfig) {
       "observability": "Observability & Detection",
       "ai-landscape": "AI & Security Landscape",
       "cross-cutting": "Cross-Cutting Guides",
+      "wasm": "WebAssembly",
     };
     return names[slug] || slug;
   });
