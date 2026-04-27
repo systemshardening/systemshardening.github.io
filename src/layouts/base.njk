@@ -3,11 +3,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.url == "/" %}System Hardening Guides | {{ site.title }}{% elif layout == "article.njk" %}{{ title }}{% elif title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.url == "/" %}Linux & Kubernetes Hardening Guides | {{ site.title }}{% elif layout == "article.njk" %}{{ title }}{% elif title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <meta name="robots" content="index, follow">
+
+  {% if page.url == "/" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "inLanguage": "{{ site.language or 'en' }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/static/og-default.svg"
+      }
+    }
+  }
+  </script>
+  {% endif %}
+
+  {% set urlParts = page.url.split("/") %}
+  {% if (urlParts | length) == 4 and urlParts[1] == "articles" %}
+  {% set catSlug = urlParts[2] %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{ title }}",
+    "description": "{{ description or site.description }}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+      {"@type": "ListItem", "position": 2, "name": "Articles", "item": "{{ site.url }}/articles/"},
+      {"@type": "ListItem", "position": 3, "name": "{{ catSlug | categoryName }}"}
+    ]
+  }
+  </script>
+  {% endif %}
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title or site.title }}">
