@@ -24,6 +24,14 @@ jobs:
       - name: Checkout site repo
         uses: actions/checkout@v6
 
+      - name: Check README for sensitive content
+        run: |
+          PATTERNS="systemshardening-roadmap-planning|CONTENT_REPO_READ_TOKEN|SITE_REPO_PUSH_TOKEN|SITE_REPO_DISPATCH_TOKEN"
+          if find . -maxdepth 1 -name "*.md" | xargs grep -El "$PATTERNS" 2>/dev/null | grep .; then
+            echo "ERROR: Sensitive content found in a markdown file. Aborting deployment."
+            exit 1
+          fi
+
       - name: Checkout content from private repo
         uses: actions/checkout@v6
         with:
