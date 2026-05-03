@@ -193,16 +193,16 @@
     if (!window.speechSynthesis) return;
 
     if (state === 'playing') {
-      speechSynthesis.pause();
+      speechSynthesis.cancel();
       state = 'paused';
       updateBtn(btn);
       return;
     }
 
     if (state === 'paused') {
-      speechSynthesis.resume();
       state = 'playing';
       updateBtn(btn);
+      speakFrom(currentIndex, btn);
       return;
     }
 
