@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1b2137"/>
+  <path d="M560 180 L600 160 L640 180 L640 240 C640 260 620 275 600 280 C580 275 560 260 560 240 Z" fill="none" stroke="#60a5fa" stroke-width="3"/>
+  <text x="600" y="228" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff">SH</text>
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#ffffff">systemshardening.com</text>
+  <text x="600" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#8891a4">Production-Ready System Hardening Guides</text>
+  <rect x="270" y="420" width="660" height="3" rx="2" fill="url(#grad)"/>
+  <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+</svg>

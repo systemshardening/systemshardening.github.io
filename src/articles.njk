@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: Articles
+description: "Production-ready hardening guides for Linux, Kubernetes, networking, CI/CD, observability, and AI workloads."
+permalink: /articles/index.html
+---
+
+<div class="articles-page-header">
+  <h1>Articles</h1>
+  <p>Every article follows the same structure: Problem, Threat Model, Configuration, Expected Behaviour, Trade-offs, and Failure Modes. No fluff.</p>
+</div>
+
+<div class="search-box">
+  <input type="search" id="article-search" placeholder="Search articles..." autocomplete="off">
+</div>
+
+{% include "nav.njk" %}
+
+{% set cats = collections.articlesByCategory %}
+
+{% for catSlug, catArticles in cats %}
+  <section class="category-section" id="{{ catSlug }}">
+    <h2>{{ catSlug | categoryName }}</h2>
+    <div class="article-list">
+      {% for item in catArticles %}
+        {% set article = item %}
+        {% include "article-meta.njk" %}
+      {% endfor %}
+    </div>
+  </section>
+{% endfor %}
+
+<script src="/static/search.js" defer></script>

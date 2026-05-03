@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "CI/CD & Supply Chain Security Articles"
+description: "CI/CD security guides covering GitHub Actions, Terraform, secret management, SBOM, SLSA provenance, container registries, and Helm charts."
+permalink: "/articles/cicd/"
+---
+<div class="articles-page-header">
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+</div>
+
+<div class="search-box">
+  <input type="search" id="article-search" placeholder="Search articles..." autocomplete="off">
+</div>
+
+{% include "nav.njk" %}
+
+<h2>CI/CD Pipeline and Supply Chain Hardening</h2>
+
+<div class="article-list">
+{% set catArticles = collections.articlesByCategory['cicd'] %}
+{% for item in catArticles %}
+  {% set article = item %}
+  {% include "article-meta.njk" %}
+{% endfor %}
+</div>
+
+<script src="/static/search.js" defer></script>

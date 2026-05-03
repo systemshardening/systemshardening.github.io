@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "Kubernetes / Platform Security Articles"
+description: "Kubernetes hardening guides covering RBAC, network policies, admission control, secrets management, runtime security, and AI workloads."
+permalink: "/articles/kubernetes/"
+---
+<div class="articles-page-header">
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+</div>
+
+<div class="search-box">
+  <input type="search" id="article-search" placeholder="Search articles..." autocomplete="off">
+</div>
+
+{% include "nav.njk" %}
+
+<h2>Kubernetes Security and Hardening Guides</h2>
+
+<div class="article-list">
+{% set catArticles = collections.articlesByCategory['kubernetes'] %}
+{% for item in catArticles %}
+  {% set article = item %}
+  {% include "article-meta.njk" %}
+{% endfor %}
+</div>
+
+<script src="/static/search.js" defer></script>

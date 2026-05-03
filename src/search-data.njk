@@ -1,0 +1,15 @@
+---
+permalink: /search-data.json
+eleventyExcludeFromCollections: true
+---
+[
+{%- for article in collections.articles %}
+  {
+    "title": {{ article.data.title | jsonStringify }},
+    "url": {{ article.url | jsonStringify }},
+    "category": {{ (article.data.category or "") | jsonStringify }},
+    "tags": {{ (article.data.tags or []) | jsonStringify }},
+    "difficulty": {{ (article.data.difficulty or "") | jsonStringify }}
+  }{% if not loop.last %},{% endif %}
+{%- endfor %}
+]

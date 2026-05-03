@@ -1,0 +1,73 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# systemshardening.com
+
+> Hardening real systems in production, for engineers who actually run them.
+
+This site contains {{ collections.articles | length }} technical articles covering production system hardening across Linux, Kubernetes, networking, CI/CD pipelines, observability, AI workloads, and WebAssembly.
+
+## Content Structure
+
+Every article follows a consistent six-section structure:
+1. **Problem** - What specific gap, risk, or failure mode the hardening addresses
+2. **Threat Model** - Who the adversary is, what access they have, what they want
+3. **Configuration** - Complete, copy-pasteable commands and config files
+4. **Expected Behaviour** - How to verify the hardening is working correctly
+5. **Trade-offs** - Performance, complexity, and compatibility costs with mitigations
+6. **Failure Modes** - What breaks, how to detect it, how to recover
+
+All configurations are syntactically valid and version-pinned to specific tool releases. No pseudocode.
+
+## Categories
+
+### Linux / OS Hardening ({{ collections.articlesByCategory["linux"] | length }} articles)
+Kernel hardening (sysctl, lockdown, module signing), filesystem integrity (dm-verity, IMA/EVM, LUKS/TPM2), process isolation (capabilities, seccomp, landlock, AppArmor, SELinux), SSH and PAM hardening, auditd, nftables, systemd sandboxing, eBPF LSM, FIDO2 authentication, and container base image hardening.
+
+### Kubernetes / Platform ({{ collections.articlesByCategory["kubernetes"] | length }} articles)
+API server hardening, RBAC design, network policies, secrets management, pod security contexts, seccomp profiles, node hardening, etcd encryption, admission control, image policy enforcement, Falco runtime security, multi-tenancy isolation, service account tokens, confidential containers, cert-manager PKI, OIDC authentication, RuntimeClass sandboxing (gVisor/Kata), and AI/ML workload security.
+
+### Network & API Security ({{ collections.articlesByCategory["network"] | length }} articles)
+TLS hardening (nginx, Envoy, HAProxy), mTLS service mesh, DNS security (DNSSEC, DoH), HTTP security headers, rate limiting, WAF tuning, DDoS defence, request smuggling prevention, BGP/RPKI, gRPC security, API gateway hardening, WebSocket hardening, eBPF/XDP, WireGuard mesh, and email authentication (SPF/DKIM/DMARC/BIMI).
+
+### CI/CD & Supply Chain ({{ collections.articlesByCategory["cicd"] | length }} articles)
+Pipeline secret management, GitHub Actions hardening, OIDC federation, SLSA provenance, SBOM generation, artifact integrity, Sigstore keyless signing, dependency pinning, container registry security, GitOps security, Helm supply chain, reproducible builds, JIT CI access, Terraform security, GitHub Advanced Security, and container build hardening (BuildKit).
+
+### Observability & Detection ({{ collections.articlesByCategory["observability"] | length }} articles)
+Audit log pipelines, Prometheus security metrics, Falco and Tetragon runtime detection, OpenTelemetry Collector hardening, security dashboards, SIEM cost optimisation, detection-as-code (Sigma), incident response runbooks, lateral movement detection, container escape detection, log integrity, certificate expiry monitoring, threat hunting (Osquery), honeypot and deception technology, and cloud provider audit logs (CloudTrail/GCP/Azure).
+
+### AI & Security Landscape ({{ collections.articlesByCategory["ai-landscape"] | length }} articles)
+LLM deployment security, prompt injection defence, MCP server security, AI agent sandboxing, model supply chain, AI-assisted threat detection, EU AI Act compliance, jailbreak defence, multi-modal attack surfaces, privacy-preserving inference (DP-SGD, TEEs), federated learning security, adversarial embeddings, membership inference defence, AI governance pipelines, red teaming, and Claude-based security automation.
+
+### Cross-Cutting Guides ({{ collections.articlesByCategory["cross-cutting"] | length }} articles)
+Zero-trust networking, secrets rotation, SPIFFE/SPIRE workload identity, HashiCorp Vault, PostgreSQL and Redis hardening, post-quantum migration, compliance-as-code, OAuth 2.0/OIDC hardening, HSM key management, Kafka security, multi-cloud hardening, incident response, tabletop exercises, threat modelling at scale, and hardening patterns for small teams.
+
+### WebAssembly ({{ collections.articlesByCategory["wasm"] | length }} articles)
+Wasmtime production hardening, WASI Preview 2 capabilities, OCI module signing, multi-tenancy patterns, cold-start optimisation (AOT/snapshots), WASM threads and shared memory security, WASM component model security, static analysis, Spin framework security, wasmCloud security (NKEYs/lattice), Envoy and NGINX WASM filters, reproducible builds, edge runtimes, IoT deployment, and AI inference in WASM.
+
+## Audience
+
+Articles target these personas:
+- Platform Engineers building Kubernetes clusters and internal developer platforms
+- Site Reliability Engineers who own uptime and incident response
+- DevOps Engineers running CI/CD pipelines and automation
+- Security Engineers focused on detection, prevention, and compliance
+- Systems Engineers managing OS-level configuration
+- AI/ML Platform Engineers deploying models and inference infrastructure
+
+Difficulty levels: intermediate, advanced.
+
+## Programmatic Access
+
+- **JSON Article Index**: {{ site.url }}/api/articles.json
+- **Atom Feed**: {{ site.url }}/feed.xml
+- **Sitemap**: {{ site.url }}/sitemap.xml
+
+The JSON endpoint returns structured metadata for every article: title, URL, category, tags, difficulty, estimated reading time, and target personas.
+
+Every article page includes JSON-LD structured data (`TechArticle` and `BreadcrumbList` schema types) for machine-readable metadata.
+
+## Linking and Citation
+
+Use full canonical URLs when referencing articles (e.g., {{ site.url }}/articles/linux/sysctl-kernel-hardening/). Every article has a stable permalink based on its category slug and article slug. Permalinks do not change after publication.

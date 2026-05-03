@@ -1,0 +1,93 @@
+---
+layout: base.njk
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "{{ site.url }}/articles/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ category | categoryName }}", "item": "{{ site.url }}/articles/{{ category }}/"},
+    {"@type": "ListItem", "position": 4, "name": "{{ title }}"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ title }}",
+  "datePublished": "{{ date | dateToISO }}",
+  "dateModified": "{{ lastmod | dateToISO if lastmod else date | dateToISO }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Systems Hardening",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "systemshardening.com"
+  },
+  "description": "{{ description or '' }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+  "proficiencyLevel": "{{ difficulty }}",
+  "timeRequired": "PT{{ estimated_reading_time }}M"
+}
+</script>
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="article-category" data-cat="{{ category }}">{{ category | categoryName }}</span>
+      {% if difficulty %}
+        <span class="article-difficulty">{{ difficulty }}</span>
+      {% endif %}
+      {% if estimated_reading_time %}
+        <span class="article-reading-time">{{ estimated_reading_time }} min read</span>
+      {% endif %}
+    </div>
+    <h1>{{ title }}</h1>
+    {% if date %}
+      <time datetime="{{ date }}">{{ date | dateDisplay }}</time>
+    {% endif %}
+    {% if tags %}
+      <div class="article-tags">
+        {% for tag in tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="article-listen">
+      <button id="tts-btn" class="tts-btn" aria-label="Listen to article">
+        <span class="tts-icon" aria-hidden="true">▶</span>
+        <span class="tts-label">Listen</span>
+      </button>
+    </div>
+  </header>
+
+  {% if toc %}
+  <nav class="article-toc" aria-label="Table of contents">
+    <p class="article-toc-title">On this page</p>
+    <ol>
+      {% for item in toc %}
+        <li><a href="#{{ item.slug }}">{{ item.text }}</a></li>
+      {% endfor %}
+    </ol>
+  </nav>
+  {% endif %}
+
+  <div class="article-content">
+    {{ content | safe }}
+  </div>
+
+  <script src="/static/tts.js"></script>
+  <footer class="article-footer">
+    {% if lastmod %}
+      <p class="article-updated">Last updated: {{ lastmod | dateDisplay }}</p>
+    {% endif %}
+    <nav class="article-nav">
+      <a href="/articles/">All articles</a>
+      <a href="/articles/{{ category }}/">More in {{ category | categoryName }}</a>
+    </nav>
+  </footer>
+</article>

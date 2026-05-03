@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "Cross-Cutting Security Guides"
+description: "Cross-cutting security guides covering Kubernetes platforms, databases, compliance, zero trust, incident response, and multi-cloud hardening."
+permalink: "/articles/cross-cutting/"
+---
+<div class="articles-page-header">
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+</div>
+
+<div class="search-box">
+  <input type="search" id="article-search" placeholder="Search articles..." autocomplete="off">
+</div>
+
+{% include "nav.njk" %}
+
+<h2>Cross-Cutting Production Hardening Guides</h2>
+
+<div class="article-list">
+{% set catArticles = collections.articlesByCategory['cross-cutting'] %}
+{% for item in catArticles %}
+  {% set article = item %}
+  {% include "article-meta.njk" %}
+{% endfor %}
+</div>
+
+<script src="/static/search.js" defer></script>
