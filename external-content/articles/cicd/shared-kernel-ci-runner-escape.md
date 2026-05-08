@@ -14,7 +14,7 @@ tags:
 personas:
   - platform-engineer
   - security-engineer
-article_number: 660
+article_number: 692
 difficulty: Advanced
 estimated_reading_time: 13
 published: true

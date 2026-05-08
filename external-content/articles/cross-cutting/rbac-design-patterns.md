@@ -1,7 +1,7 @@
 ---
 title: "RBAC Design Patterns: Building Maintainable, Least-Privilege Permission Systems"
 description: "Ad-hoc permission assignments accumulate into unmaintainable, over-privileged systems. Structured RBAC design with role hierarchies, functional decomposition, and regular reviews prevents privilege creep. This guide covers RBAC modelling, temporal access patterns, policy-as-code enforcement, and common design anti-patterns."
-slug: rbac-design-patterns
+slug: rbac-design-patterns-systems
 date: 2026-05-07
 lastmod: 2026-05-07
 category: cross-cutting
